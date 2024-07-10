@@ -13,11 +13,32 @@ transport . limitation autoroute . réduction:
   titre: Aumento del consumo 120 -&gt; 100
   formule: 25%
   note: Pasar de 120 a 100 km/h en autopista equivale a pasar de 130 a 110 km/h en términos de consumo de combustible.
+transport . voiture . km:
+  description: |
+    Cuente sólo los desplazamientos personales (compras, ocio, familia, etc.) y los desplazamientos a su lugar de trabajo habitual.
+
+    Por ejemplo, si está en misión de trabajo en otro cantón u otro país, esto se incluye en la contabilidad de su empresa: no lo cuente aquí.
 transport . voiture . km annuels moyen:
   formule: 7000
   unité: km
   note: |
     Fuente: <a href="https://www.bfs.admin.ch/bfs/fr/home/statistiques/mobilite-transports/transport-personnes/comportements-transports/distance-duree-jour-deplacements.html">Oficina Federal de Estadística</a> de Suiza.
+transport . voiture . gabarit . petite:
+  titre: Petite
+  description: Renault Zoé o Fiat 500
+transport . voiture . gabarit . moyenne:
+  titre: Media
+  description: Modelo superior al coche urbano pequeño, como el Renault Mégane o el VW Golf
+transport . voiture . gabarit . VUL:
+  titre: Vehículo comercial
+  description: Furgoneta o minibús como VW Multivan o Mercedes Vito
+transport . voiture . gabarit . berline:
+  titre: Salón
+  description: Coche largo como Peugeot 508, Tesla Model 3, Audi A4 o A6
+transport . voiture . gabarit . SUV:
+  titre: SUV
+  description: |
+    "Vehículo utilitario deportivo, tipo 4x4 urbano
 transport . voiture . thermique . carburant:
   description: |
     Para ayudarle a comprender los distintos tipos de combustible, <a href="https://www.francetvinfo.fr/economie/automobile/essence/les-carburants-changent-de-nom-a-la-pompe-voici-comment-vous-y-retrouver_2967013.html">este artículo educativo</a> le resultará muy útil.
@@ -41,7 +62,7 @@ transport . avion . usager:
 
     Así que, tanto si vuela todos los años como si no, responda "sí" y tendrá entonces la opción de introducir sus horas de vuelo en los últimos 3 años.
 
-    > Si voló de Zúrich a Nueva York en 2022 (aproximadamente 19h ida y vuelta), sus emisiones asociadas (casi 2 toneladas) se repartirán entre los 3 últimos años.
+    > Si voló de Zúrich a Nueva York en 2023 (aproximadamente 19h ida y vuelta), sus emisiones asociadas (casi 2 toneladas) se repartirán entre los 3 últimos años.
 transport . avion . court courrier . durée moyenne:
   titre: Tiempo medio que pasa un suizo en vuelos de corta distancia
 transport . avion . court courrier . passager km moyen:
@@ -222,7 +243,7 @@ transport . mobilité douce . vae . empreinte:
   note: Mobitool e-bike mediana 25 km/h, 45 km/h y bicicleta de carga (suministro de energía)
 transport . mobilité douce . vae . construction:
   formule: 198
-  note: Mobitool bicicleta eléctrica media 25 km/h, 45 km/h y bicicleta de carga ((fabricación + mantenimiento + fin de vida útil) * km
+  note: Mobitool e-bike media 25 km/h, 45 km/h y bicicleta de carga ((fabricación + mantenimiento + fin de vida útil) * km
 transport . mobilité douce . vae . durée de vie:
   formule: 10
   note: Mobitool bicicleta eléctrica media 25 km/h, 45 km/h y bicicleta de carga
@@ -242,7 +263,7 @@ divers . animaux domestiques . empreinte . chien moyen . nombre:
 divers . autres produits . niveau de dépenses:
   question: El test aún no recoge todo su consumo. ¿Cuánto calcula que gasta al año en nuevos productos (decoración, bricolaje, juegos, pasatiempos, herramientas, etc.)?
   description: |
-    Para simplificar la interfaz, le ofrecemos una estimación, a través de sus gastos, de la huella de los bienes de consumo que posee y que cree no haber incluido en las preguntas anteriores
+    Para simplificar la interfaz, te proponemos una estimación, a través de tus gastos, de la huella de los bienes de consumo que posees y que crees no haber incluido en las preguntas anteriores
     que posees y que crees no haber incluido en las preguntas anteriores.
 
     Se trata de: **juegos, decoración, equipamiento de cocina, ropa de hogar, materiales para aficiones creativas o bricolaje, plantas, etc.**
@@ -263,6 +284,38 @@ divers . loisirs . culture . édition . fréquence . élevée:
   titre: De 15 a 30 CHF al mes
 divers . loisirs . culture . édition . fréquence . très élevée:
   titre: Más de 30 CHF al mes
+divers . textile . notif débarras surplus:
+  description: |
+    > Antes de comprar un artículo nuevo: ¿y si hicieras un poco de selección?
+alimentation . plats:
+  question: 'Elija sus platos de comida y cena para una semana normal '
+  description: |
+    Elija 14 platos que representen su semana típica: 7 comidas al mediodía y 7 cenas por la noche. 
+
+    > Hoy trabajamos para que los menús asociados a tus comidas sean lo más representativos posible de tus hábitos, así que no dudes en ir más allá ojeando la documentación.
+alimentation . local . consommation:
+  description: |
+    Esta pregunta nos permite ajustar la huella de su dieta en función de sus hábitos sobre el carácter local de sus compras.
+
+    Consideramos "locales" los alimentos que proceden de la región donde vives o de regiones cercanas. Si come "suizo", considere que sus alimentos son locales.
+
+    Este criterio tiene un impacto relativamente bajo, porque la parte del transporte en la huella de carbono de los productos que consumimos es inferior a las emisiones vinculadas a la producción, la transformación o el envasado, sobre todo cuando su dieta se basa en la carne.
+
+    Pero sigue siendo una situación en la que todos ganamos, y los beneficios de comer localmente no se limitan a la huella climática.
+
+    > ⚠️ Cuidado, si haces la compra en coche a varios kilómetros de casa cada semana, ¡es posible que la huella del último kilómetro supere las ganancias de comer localmente!
+alimentation . de saison . consommation:
+  description: |
+    Esta pregunta nos permite corregir la huella de su alimentación en función de sus hábitos sobre la estacionalidad de sus compras.
+alimentation . déchets . quantité jetée:
+  description: |
+    > Responda "Residuo Cero" sólo si hace un seguimiento de hasta el último residuo. Para saber más sobre estilos de vida de residuo cero, visite el sitio web de Residuo Cero Ginebra.
+
+    > Tenga en cuenta que, en el caso de un compromiso de residuo cero, seguimos considerando las emisiones de gases de efecto invernadero (aunque muy reducidas), ya que es muy difícil, si no imposible, no generar ningún residuo
+    es muy difícil, si no imposible, generar cero residuos, algunos de los cuales son invisibles e inevitables.
+logement . âge:
+  description: |
+    En el cantón de Ginebra, más de la mitad de los edificios residenciales y viviendas unifamiliares se construyeron antes de 1980.
 parc français . surface moyenne:
   formule: 80
 parc français . chauffage . consommation électricité par m2:
@@ -328,14 +381,20 @@ logement . électricité . réseau . consommation estimée via le coût . facteu
   formule: 0.28
 logement . chauffage . réseau de chaleur . intensité carbone:
   formule: 0.067
+logement . chauffage . citerne propane . consommation estimée via le coût . saisie:
+  unité: CHF/mois
 logement . chauffage . citerne propane . consommation estimée via le coût . facteur:
   unité: CHF/kg
+logement . chauffage . bois . type . bûches . consommation estimée via le coût . saisie:
+  unité: CHF/mois
 logement . chauffage . bois . type . bûches . consommation estimée via le coût . facteur:
   unité: CHF/stère
 logement . chauffage . bois . type . bûches . prix stère 2024:
   formule: 180
   unité: CHF/stère
   note: Unión Suiza de Agricultores, leña 2023, venta directa, especies medianas https://www.sbv-usp.ch/fr/prix/vente-directe/bois-de-cheminee
+logement . chauffage . bois . type . granulés . consommation estimée via le coût . saisie:
+  unité: CHF/mois
 logement . chauffage . bois . type . granulés . consommation estimée via le coût . facteur:
   unité: CHF/kWh
 logement . chauffage . bois . type . granulés vrac . prix 100 kWh:
@@ -344,24 +403,40 @@ logement . chauffage . bois . type . granulés vrac . prix 100 kWh:
 logement . chauffage . bois . type . granulés sac . prix 100 kWh:
   formule: 11
   note: Precios medios de la energía FSO su-f-05.02.91, media 2022 (4,8 kWh/kg) https://www.bfs.admin.ch/bfs/fr/home/statistiques/prix/indice-prix-consommation/resultats-detailles.assetdetail.25245904.html
+logement . chauffage . fioul . consommation estimée via le coût . saisie:
+  unité: CHF/mois
 logement . chauffage . fioul . consommation estimée via le coût . facteur:
   unité: CHF/litre
   formule: 1.397
+logement . chauffage . réseau de chaleur . consommation estimée via le coût . saisie:
+  unité: CHF/mois
+logement . chauffage . réseau de chaleur . consommation estimée via le coût . facteur:
+  unité: CHF/kWh
 logement . type:
   description: |
-    Esta información influye no solo en la huella de construcción, sino también en el alcance de los trabajos de aislamiento, por ejemplo.
+    Esta información influye no sólo en la huella de construcción, sino también en el alcance de los trabajos de aislamiento, por ejemplo.
 
     > Si vives en un tipo de alojamiento poco habitual, como una autocaravana, no hay problema: elige "piso" e introduce los m² de lo que realmente habitas.
 logement . construction . empreinte amortie:
   formule: 696 / 60
   note: Informe Haute école fribourg 2021 (amortización a 60 años)
-logement . âge:
-  note: En el cantón de Ginebra, más de la mitad de los edificios residenciales y viviendas unifamiliares se construyeron antes de 1980.
+logement . construction . base . amortissement:
+  formule:
+    variations:
+      - si: rénovation . travaux . travaux réalisés
+        alors: 75
+      - sinon: 60
+  note: |
+    Supuesto estándar SIA
 logement . habitants:
   par défaut: 2.1
+logement . électricité . réseau . consommation estimée via le coût . saisie:
+  unité: CHF/mois
 logement . électricité . réseau . consommation:
   description: |
     Consejo: puede consultar su consumo anual de electricidad en sus facturas o en su cuenta en línea en el sitio web de SIG.
+
+    > Si vive en más de una propiedad (por ejemplo, si tiene una segunda vivienda), intente "reducir" su consumo al de su propiedad principal para obtener una estimación lo más precisa posible.
 logement . chauffage . fioul:
   titre: Fuelóleo
 logement . chauffage:
@@ -379,6 +454,8 @@ logement . chauffage . gaz . consommation:
     Consejo: Puedes conocer tu consumo anual de energía en tus facturas de gas.
 
     > En el caso de la calefacción, es posible que su compañía de calefacción no le facilite el consumo en kWh de su vivienda cuando la caldera está centralizada. Puede introducir el importe de su factura en CHF para estimar sus kWh. Si tiene dos facturas de gas de cocina y gas de calefacción (gastos), sume los dos importes.
+logement . chauffage . gaz . consommation estimée via le coût . saisie:
+  unité: CHF/mois
 logement . chauffage . gaz . consommation estimée via le coût . facteur:
   unité: CHF/kWh
   formule: 0.143
@@ -394,6 +471,18 @@ logement . chauffage . gaz . intensité carbone gaz utilisateur:
   formule: gaz . facteur d'émission base carbone
 logement . chauffage . réseau de chaleur . consommation:
   aide: null
+  description: |
+    El contenido en carbono de un kWh de calor procedente de una red de calefacción depende mucho de la red a la que esté conectado.
+
+    Consejo: Puedes consultar tu consumo anual de energía en tus facturas o en tu cuenta online de la web de tu proveedor.
+
+    > Cuando la caldera está centralizada, es posible que su compañía de calefacción no le facilite el consumo en kWh de su vivienda. Puedes introducir el importe de tu factura en CHF para estimar tus kWh.
+logement . climatisation . présent:
+  description: |
+    El aire acondicionado utiliza electricidad, que ya se incluye en kWh o CHF en la pregunta sobre electricidad. Por tanto, la huella de la electricidad consumida por el aire acondicionado ya está calculada.
+
+    Pero además, un aparato de aire acondicionado emite otros gases de efecto invernadero: de ahí la necesidad de hacer esta pregunta.
+    ¿Tiene aire acondicionado? Su consumo eléctrico se incluirá simplemente en la factura de la luz, como el de todos los aparatos eléctricos de la casa. Aquí se tienen en cuenta las fugas de gas refrigerante.
 services sociétaux . question rhétorique:
   question: Asignamos la huella de los servicios públicos (educación, sanidad, etc.) por igual a cada ginebrino.
   description: |
@@ -416,7 +505,7 @@ services sociétaux . voter:
 
     Dependiendo del tema, las votaciones pueden ser una oportunidad para plantear la cuestión del cambio climático. Es una forma de actuar indirectamente sobre la huella de carbono de los servicios públicos, y sobre otras cuestiones en las que los esfuerzos individuales no bastan.
 
-    Pero eso no es todo Puedes participar en foros o asambleas de ciudadanos Si eres estudiante, puede que haya procesos en marcha (asambleas, peticiones, votaciones, etc.) para dirigir tu universidad hacia la sostenibilidad Si eres empleado, ¿puedes influir en las decisiones que toma tu empresa? Si estás jubilado, ¿puedes dedicar parte de tu tiempo a cooperativas o asociaciones?
+    Pero eso no es todo Puedes participar en foros y asambleas de ciudadanos Si eres estudiante, puede que haya procesos en marcha (asambleas, peticiones, votaciones, etc.) para dirigir tu universidad hacia la sostenibilidad Si eres empleado, ¿puedes influir en las decisiones que toma tu empresa? Si estás jubilado, ¿puedes dedicar parte de tu tiempo a cooperativas o asociaciones?
 services sociétaux . pression locale:
   description: |
     La huella de los servicios públicos es la huella de muchas actividades gestionadas por la confederación, el cantón o el municipio, como las escuelas o la policía.
@@ -444,7 +533,7 @@ divers . électroménager . appareils . allongement:
 
     Encontrará muchos consejos sobre el uso de sus electrodomésticos en https://www.energie-environnement.ch/appareils-electromenagers
 
-    Para prolongar la vida útil de tus electrodomésticos, no dudes en llevarlos a reparar. El sitio https://www.ge-repare.ch ofrece una lista de direcciones de reparación.
+    Para alargar la vida de tus electrodomésticos, no dudes en llevarlos a reparar. El sitio https://www.ge-repare.ch ofrece una lista de direcciones de reparación.
 
     Si realmente quiere deshacerse de un electrodoméstico, piense en las ressourceries o reciclerías, que son lugares dedicados a la reutilización
 divers . ameublement . meubles . allongement:
@@ -467,7 +556,7 @@ transport . arrêter l'avion:
     La calculadora de transporte de <a href="https://co2.myclimate.org/fr/calculate_emissions">myclimate</a> permite visualizar esta huella y compararla con otros medios de transporte.
 transport . arrêter l'avion court:
   description: |
-    Volar ha revolucionado nuestra forma de vivir y viajar. Ahora podemos viajar más lejos, más rápido y con más frecuencia, pero desgraciadamente esto no ha venido sin una desventaja para el clima. 
+    Volar ha revolucionado nuestra forma de vivir y viajar. Ahora podemos viajar más lejos, más rápido y con más frecuencia, pero desgraciadamente esto no está exento de inconvenientes para el clima. 
 
     De hecho, hay una relación de 100 entre los factores de emisión (cantidad de CO₂ emitida por km recorrido) de un avión y un tren.
 
@@ -544,9 +633,9 @@ transport . boulot:
   description: |
     Mientras que el coche compartido de larga distancia es bien conocido en Suiza, el de corta distancia es casi inexistente: hoy en día, sólo el 4% de los desplazamientos de casa al trabajo se hacen en coche compartido.
 
-    Numerosos sitios web ofrecen plataformas gratuitas para poner en contacto a personas que realizan el mismo trayecto, ya sea regularmente, por ejemplo para ir al trabajo, u ocasionalmente, por ejemplo en un viaje de esquí.
+    Numerosos sitios web ofrecen plataformas gratuitas para poner en contacto a personas que realizan el mismo trayecto, ya sea de forma regular, por ejemplo para ir al trabajo, o puntual, por ejemplo para ir a esquiar.
 
-    -<a href="http://www.e-covoiturage.ch/index.php/fr/">e-carpooling website</a>: plataforma suiza para compartir coche;
+    -<a href="http://www.e-covoiturage.ch/index.php/fr/">Sitio web de e-carpooling</a>: plataforma suiza para compartir coche;
 
     -<a href="http://www.covoiturage-leman.org/">Léman carpooling</a> website: plataforma para compartir coche en la región del Lago Lemán;
 
@@ -571,9 +660,9 @@ transport . réduction covoiturage:
     Según un estudio realizado en Francia, el coche compartido puede reducir las emisiones en torno a un 20%.
 transport . boulot . sans voiture:
   description: |
-    Siempre que sea posible, ir al trabajo en transporte público o en medios de transporte ligeros (a pie, en bicicleta, en patinete, etc.) no sólo reduce nuestra huella de carbono, sino que mejora nuestra calidad de vida.
+    Siempre que sea posible, ir al trabajo en transporte público o ligero (andando, en bici, en patinete, etc.) no sólo reduce nuestra huella de carbono, sino que mejora nuestra calidad de vida.
 
-    En Ginebra, el 45% de los desplazamientos relacionados con el trabajo se realizan en coche o en vehículos de dos ruedas motorizados <a href="https://statistique.ge.ch/domaines/11/11_02/tableaux.asp">(MRMT 2021</a>), en su mayoría por personas que viajan solas en sus coches. Es lo que se conoce como autosolismo.
+    En Ginebra, el 45% de los desplazamientos relacionados con el trabajo se realizan en coche o en vehículo de dos ruedas motorizado <a href="https://statistique.ge.ch/domaines/11/11_02/tableaux.asp">(MRMT 2021</a>), en su mayoría por personas que viajan solas en sus coches. Es lo que se conoce como autosolismo.
 
     Además de emitir muchos gases de efecto invernadero, este tipo de conducción reduce la calidad del aire de nuestras ciudades y, por tanto, nuestra salud, obstruye las vías urbanas y genera contaminación acústica.
 
@@ -633,7 +722,7 @@ logement . baisse température . nombre degrés:
 
     Por supuesto, las ventanas deben permanecer cerradas. Para ventilar tu casa, y si no tienes ventilación mecánica, abre las ventanas de par en par 1 vez al día durante 5 o 10 minutos diarios.
 
-    Una buena gestión de persianas y contraventanas aumentará tu confort y reducirá aún más las emisiones de tu vivienda: abrirlas durante el día te permitirá beneficiarte de la energía del sol, mientras que cerrarlas por la noche aumentará tu confort y reducirá las pérdidas de calor.
+    Una buena gestión de persianas y contraventanas aumentará tu confort y reducirá aún más las emisiones de tu hogar: abrirlas durante el día te permitirá beneficiarte de la energía del sol, mientras que cerrarlas por la noche aumentará tu confort y reducirá la pérdida de calor.
 logement . baisse température . gains 1 degré:
   formule: 0.1
   description: |
@@ -681,9 +770,9 @@ logement . raccordement réseau de chaleur:
 
     Sin embargo, conectarse a una red de calefacción no es tan sencillo como suscribir un contrato de electricidad. La viabilidad de la conexión depende de una serie <a href=" https://www.ge.ch/installations-chauffage-batiment/se-raccorder-reseau-chauffage-distance">de condiciones técnicas</a>.
 
-    En primer lugar, la conexión es para todo un edificio: no es posible conectar sólo su piso. En segundo lugar, hay que comprobar que hay una red de calefacción cerca del edificio y, a continuación, estudiar la infraestructura de calefacción dentro del edificio (un edificio con un sistema de calefacción colectivo le permitirá conectarse a un coste menor)
+    En primer lugar, la conexión es para todo un edificio: no es posible conectar sólo su piso. En segundo lugar, hay que comprobar que hay una red de calefacción cerca del edificio, y luego ver la infraestructura de calefacción dentro del edificio (un edificio con un sistema de calefacción colectivo le permitirá conectarse a un coste menor)
 
-    En cuanto al impacto sobre el clima, una red de calefacción se alimenta generalmente de fuentes de energía locales renovables o recuperadas (al menos el 50% en Ginebra, con un objetivo del 80% para 2030), es decir, mediante la incineración de residuos domésticos, la combustión de biomasa o la utilización de energía geotérmica, lo que reduce considerablemente el impacto en CO2 del kWh de energía consumida en comparación con el gas o el petróleo.
+    En cuanto al impacto sobre el clima, una red de calefacción se alimenta generalmente de fuentes de energía locales renovables o recuperadas (al menos el 50% en Ginebra, con el objetivo del 80% para 2030), es decir, mediante la incineración de residuos domésticos, la combustión de biomasa o la utilización de energía geotérmica, lo que reduce considerablemente el impacto en CO2 del kWh de energía consumida en comparación con el gas o el petróleo.
   description: |
     Alimentadas al menos en un 50% por energías locales renovables y recuperadas (calor procedente de la incineración de residuos, biomasa, geotermia, etc.), las redes de calefacción urbana son una forma de calefacción con bajas emisiones de carbono. 
 
@@ -701,7 +790,7 @@ alimentation . manger local:
     Para más información: https://www.ge.ch/dossier/alimentation-durable-geneve/climat-dans-votre-assiette/proximite
 alimentation . manger de saison:
   description: |
-    Contrariamente a lo que cabría imaginar, el impacto de esta acción es relativamente pequeño, ya que la proporción de productos de temporada en la dieta media suiza es muy baja.
+    En contra de lo que cabría imaginar, el impacto de esta acción es relativamente pequeño, ya que la proporción de productos de temporada en la dieta media suiza es muy baja.
 
     Pero la alimentación estacional tiene muchas otras ventajas, como un menor consumo de agua, una mayor diversidad de cultivos y una menor dependencia de los hidrocarburos (gas y petróleo) para calentar los invernaderos. Además, el organismo no necesita los mismos nutrientes todo el año, y estas necesidades se corresponden con los alimentos de temporada.
 
@@ -710,7 +799,7 @@ alimentation . déchets . réduire gaspillage:
   description: |
     En Suiza, la cantidad media de alimentos desperdiciados se estima en 90 kg por persona y año. 
 
-    Si tenemos en cuenta toda la cadena de valor (del campo al plato), cada año se desperdician unos 2,8 millones de toneladas de alimentos, es decir, 330 kg por habitante. Para producir estos alimentos se necesitaron recursos energéticos, hídricos, financieros y humanos, por lo que estos recursos también se desperdician. Además, también repercuten en el medio ambiente. 
+    Si tenemos en cuenta toda la cadena de valor (del campo al plato), cada año se desperdician unos 2,8 millones de toneladas de alimentos, es decir, 330 kg por habitante. Para producir estos alimentos se han necesitado recursos energéticos, hídricos, financieros y humanos, por lo que estos recursos también se desperdician. Además, también repercuten en el medio ambiente. 
 
     Reducir el desperdicio de alimentos es, por tanto, esencial si queremos evitar producir para tirar, ahorrar recursos y reducir nuestro impacto en el medio ambiente
 
@@ -718,7 +807,7 @@ alimentation . déchets . réduire gaspillage:
 alimentation . déchets . composter:
   description: |
     Nuestros biorresiduos, es decir, los residuos putrescibles procedentes de nuestra alimentación (peladuras, restos de comidas, etc.),
-    representan una gran parte del peso de nuestro contenedor gris, aumentando así la huella de carbono asociada a
+    representan una gran parte del peso de nuestro contenedor gris, lo que aumenta la huella de carbono asociada a
     asociada a la gestión de residuos. A menudo, estos residuos se reciclan poco o mal, a pesar de los beneficios medioambientales que pueden aportar:
     el compost, una rica sustancia orgánica que beneficia al suelo. Compostar nuestros biorresiduos (individual o colectivamente) ayuda a reducir
     el compost puede utilizarse como alternativa a los abonos químicos.
