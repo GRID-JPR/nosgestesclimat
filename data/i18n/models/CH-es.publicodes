@@ -6,7 +6,7 @@ commun . intensité électricité:
   titre: Intensidad de carbono del mix eléctrico suizo
   formule: 0.091
   note: |
-    OCEN - SCDD para electricidad GE, media 2017-2021 (5 años).
+    Cálculo realizado por el Estado de Ginebra (OCEN - DDC), teniendo en cuenta la electricidad renovable producida localmente, que representa alrededor de 1/3 del consumo eléctrico del cantón, y el mix de consumo medio suizo (KBOB) para la electricidad importada de la red, media 2017-2021 (5 años).
 transport . limitation autoroute:
   titre: Reducción de la velocidad de 120 a 100 km/h
 transport . limitation autoroute . réduction:
@@ -15,12 +15,11 @@ transport . limitation autoroute . réduction:
   note: Pasar de 120 a 100 km/h en autopista equivale a pasar de 130 a 110 km/h en términos de consumo de combustible.
 transport . voiture . km:
   description: |
-    Cuente sólo los desplazamientos personales (compras, ocio, familia, etc.) y los desplazamientos a su lugar de trabajo habitual.
+    Cuente únicamente los desplazamientos personales (compras, ocio, familia, etc.) y los desplazamientos de ida y vuelta al trabajo para llegar a su lugar de trabajo habitual.
 
-    Por ejemplo, si está en misión de trabajo en otro cantón u otro país, esto se incluye en la contabilidad de su empresa: no lo cuente aquí.
+    Por ejemplo, si está en misión de trabajo en otro cantón o en otro país, esto se incluye en la contabilidad de su empresa: no lo cuente aquí.
 transport . voiture . km annuels moyen:
-  formule: 7000
-  unité: km
+  formule: 6000
   note: |
     Fuente: <a href="https://www.bfs.admin.ch/bfs/fr/home/statistiques/mobilite-transports/transport-personnes/comportements-transports/distance-duree-jour-deplacements.html">Oficina Federal de Estadística</a> de Suiza.
 transport . voiture . gabarit . petite:
@@ -50,12 +49,15 @@ transport . voiture . thermique . carburant . essence E5 ou E10:
   titre: Gasolina
 transport . voiture . thermique . carburant . essence E85:
   titre: Gasolina E85
+transport . deux roues . km annuels moyen:
+  formule: 320
 transport . deux roues . empreinte moyenne:
   valeur: deux roues . empreinte
   contexte:
     deux roues . usager: oui
     deux roues . type: "'moto sup 250'"
     deux roues . km: 400
+  note: MRMT 2021, valores ajustados a partir de los recuentos de 2022 para corregir el efecto COVID observado en 2021.
 transport . avion . usager:
   description: |
     Hemos optado por ofrecerle una forma de contabilizar el impacto de sus viajes en avión durante varios años. El impacto sobre el clima es tal que es importante tenerlo en cuenta.
@@ -76,7 +78,7 @@ transport . avion . court courrier . passager km moyen:
       - Media distancia: 7,4
       - Largo recorrido: 90,2%
 transport . avion . moyen courrier . durée moyenne:
-  titre: Tiempo medio que pasan los pasajeros suizos en vuelos de media distancia
+  titre: Tiempo medio de los pasajeros suizos en vuelos de media distancia
 transport . avion . moyen courrier . passager km moyen:
   titre: Distancia media recorrida por un suizo en vuelos de media distancia
   formule: 0.074 * 9000
@@ -261,13 +263,14 @@ divers . animaux domestiques . empreinte . chats . nombre:
 divers . animaux domestiques . empreinte . chien moyen . nombre:
   par défaut: 0.25
 divers . autres produits . niveau de dépenses:
-  question: El test aún no recoge todo su consumo. ¿Cuánto calcula que gasta al año en nuevos productos (decoración, bricolaje, juegos, pasatiempos, herramientas, etc.)?
+  question: El test aún no recoge todo tu consumo. ¿Cuánto calculas que gastas al año en nuevos productos (decoración, bricolaje, juegos, pasatiempos, herramientas, etc.)?
   description: |
-    Para simplificar la interfaz, te proponemos una estimación, a través de tus gastos, de la huella de los bienes de consumo que posees y que crees no haber incluido en las preguntas anteriores
-    que posees y que crees no haber incluido en las preguntas anteriores.
+    Para simplificar la interfaz, le proponemos una estimación, a través de sus gastos, de la huella de los bienes de consumo
+    que posees y que no crees haber incluido en las preguntas anteriores.
 
     Se trata de: **juegos, decoración, equipamiento de cocina, ropa de hogar, materiales para aficiones creativas o bricolaje, plantas, etc.**
   par défaut: "'important'"
+  note: El poder adquisitivo es mucho mayor en Suiza que en Francia, por lo que es más representativo que un valor medio se base en un nivel de gasto elevado.
 divers . autres produits . niveau de dépenses . faible:
   titre: Menos de 50CHF / mes
 divers . autres produits . niveau de dépenses . moyen:
@@ -276,6 +279,7 @@ divers . autres produits . niveau de dépenses . important:
   titre: Más de 120 CHF / mes
 divers . loisirs . culture . édition . fréquence:
   par défaut: "'élevée'"
+  note: El poder adquisitivo es mucho mayor en Suiza que en Francia, por lo que es más representativo que un valor medio se base en un nivel de gasto elevado.
 divers . loisirs . culture . édition . fréquence . faible:
   titre: Menos de 5 CHF al mes
 divers . loisirs . culture . édition . fréquence . normale:
@@ -284,6 +288,8 @@ divers . loisirs . culture . édition . fréquence . élevée:
   titre: De 15 a 30 CHF al mes
 divers . loisirs . culture . édition . fréquence . très élevée:
   titre: Más de 30 CHF al mes
+divers . numérique . internet . empreinte horaire:
+  formule: 0.02
 divers . textile . notif débarras surplus:
   description: |
     > Antes de comprar un artículo nuevo: ¿y si hicieras un poco de selección?
@@ -306,7 +312,7 @@ alimentation . local . consommation:
     > ⚠️ Cuidado, si haces la compra en coche a varios kilómetros de casa cada semana, ¡es posible que la huella del último kilómetro supere las ganancias de comer localmente!
 alimentation . de saison . consommation:
   description: |
-    Esta pregunta nos permite corregir la huella de su alimentación en función de sus hábitos sobre la estacionalidad de sus compras.
+    Esta pregunta nos permite corregir la huella de su alimentación según sus hábitos en la estacionalidad de sus compras.
 alimentation . déchets . quantité jetée:
   description: |
     > Responda "Residuo Cero" sólo si hace un seguimiento de hasta el último residuo. Para saber más sobre estilos de vida de residuo cero, visite el sitio web de Residuo Cero Ginebra.
@@ -417,6 +423,7 @@ logement . type:
     Esta información influye no sólo en la huella de construcción, sino también en el alcance de los trabajos de aislamiento, por ejemplo.
 
     > Si vives en un tipo de alojamiento poco habitual, como una autocaravana, no hay problema: elige "piso" e introduce los m² de lo que realmente habitas.
+  note: OCSTAT
 logement . construction . empreinte amortie:
   formule: 696 / 60
   note: Informe Haute école fribourg 2021 (amortización a 60 años)
@@ -430,13 +437,14 @@ logement . construction . base . amortissement:
     Supuesto estándar SIA
 logement . habitants:
   par défaut: 2.1
+  note: OCSTAT
 logement . électricité . réseau . consommation estimée via le coût . saisie:
   unité: CHF/mois
 logement . électricité . réseau . consommation:
   description: |
     Consejo: puede consultar su consumo anual de electricidad en sus facturas o en su cuenta en línea en el sitio web de SIG.
 
-    > Si vive en más de una propiedad (por ejemplo, si tiene una segunda vivienda), intente "reducir" su consumo al de su propiedad principal para obtener una estimación lo más precisa posible.
+    > Si vive en varias viviendas (por ejemplo, si tiene una segunda residencia), intente "reducir" su consumo al de su vivienda principal para obtener una estimación lo más precisa posible.
 logement . chauffage . fioul:
   titre: Fuelóleo
 logement . chauffage:
@@ -476,7 +484,7 @@ logement . chauffage . réseau de chaleur . consommation:
 
     Consejo: Puedes consultar tu consumo anual de energía en tus facturas o en tu cuenta online de la web de tu proveedor.
 
-    > Cuando la caldera está centralizada, es posible que su compañía de calefacción no le facilite el consumo en kWh de su vivienda. Puedes introducir el importe de tu factura en CHF para estimar tus kWh.
+    > Cuando la caldera está centralizada, es posible que su compañía de calefacción no le facilite el consumo en kWh de su vivienda. Puede introducir el importe de su factura en CHF para estimar sus kWh.
 logement . climatisation . présent:
   description: |
     El aire acondicionado utiliza electricidad, que ya se incluye en kWh o CHF en la pregunta sobre electricidad. Por tanto, la huella de la electricidad consumida por el aire acondicionado ya está calculada.
@@ -494,6 +502,7 @@ services sociétaux:
       - services publics
   description: |
     Esta partida incluye la huella de los servicios públicos suizos.
+  note: balances territoriales de carbono de la Ciudad de Ginebra y del Cantón de Ginebra
 services publics:
   formule: 1583
   note: cálculo basado en las huellas de carbono territoriales de la VdG y los cantones (véase la ficha de servicios sociales)
@@ -505,7 +514,7 @@ services sociétaux . voter:
 
     Dependiendo del tema, las votaciones pueden ser una oportunidad para plantear la cuestión del cambio climático. Es una forma de actuar indirectamente sobre la huella de carbono de los servicios públicos, y sobre otras cuestiones en las que los esfuerzos individuales no bastan.
 
-    Pero eso no es todo Puedes participar en foros y asambleas de ciudadanos Si eres estudiante, puede que haya procesos en marcha (asambleas, peticiones, votaciones, etc.) para dirigir tu universidad hacia la sostenibilidad Si eres empleado, ¿puedes influir en las decisiones que toma tu empresa? Si estás jubilado, ¿puedes dedicar parte de tu tiempo a cooperativas o asociaciones?
+    Pero eso no es todo Puedes participar en foros o asambleas de ciudadanos Si eres estudiante, puede que haya procesos en marcha (asambleas, peticiones, votaciones, etc.) para dirigir tu universidad hacia la sostenibilidad Si eres empleado, ¿puedes influir en las decisiones que toma tu empresa? Si estás jubilado, ¿puedes dedicar parte de tu tiempo a cooperativas o asociaciones?
 services sociétaux . pression locale:
   description: |
     La huella de los servicios públicos es la huella de muchas actividades gestionadas por la confederación, el cantón o el municipio, como las escuelas o la policía.
@@ -515,7 +524,7 @@ services sociétaux . pression locale:
 
     > 🛣️ Tu ayuntamiento no proporciona suficientes aparcamientos para bicicletas
 
-    El primer paso es comentar la situación con tus amigos y conocidos, y luego contactar con los responsables municipales. Así podrás informarles de la situación y ver qué medidas se han tomado ya.
+    El primer paso es comentar la situación con tus amigos y conocidos, y después ponerte en contacto con los responsables municipales. Así podrás informarles de la situación y ver qué medidas se han tomado.
 divers . numérique . appareils . allongement:
   description: |
     Aumentar la vida útil de tus electrodomésticos o aparatos electrónicos (cuidándolos o reparándolos) contribuye a limitar tu impacto sobre el clima.
@@ -529,11 +538,11 @@ divers . électroménager . appareils . allongement:
   description: |
     Aumentar la vida útil de tus electrodomésticos (cuidándolos o reparándolos cuando se estropean) contribuye a limitar tu impacto sobre el clima. 
 
-    En cambio, renovar los aparatos antes de tiempo supone producir más aparatos para el mismo servicio.
+    En cambio, renovar los aparatos prematuramente significa producir más aparatos para el mismo servicio.
 
     Encontrará muchos consejos sobre el uso de sus electrodomésticos en https://www.energie-environnement.ch/appareils-electromenagers
 
-    Para alargar la vida de tus electrodomésticos, no dudes en llevarlos a reparar. El sitio https://www.ge-repare.ch ofrece una lista de direcciones de reparación.
+    Para prolongar la vida útil de tus electrodomésticos, no dudes en llevarlos a reparar. El sitio https://www.ge-repare.ch ofrece una lista de direcciones de reparación.
 
     Si realmente quiere deshacerse de un electrodoméstico, piense en las ressourceries o reciclerías, que son lugares dedicados a la reutilización
 divers . ameublement . meubles . allongement:
@@ -556,7 +565,7 @@ transport . arrêter l'avion:
     La calculadora de transporte de <a href="https://co2.myclimate.org/fr/calculate_emissions">myclimate</a> permite visualizar esta huella y compararla con otros medios de transporte.
 transport . arrêter l'avion court:
   description: |
-    Volar ha revolucionado nuestra forma de vivir y viajar. Ahora podemos viajar más lejos, más rápido y con más frecuencia, pero desgraciadamente esto no está exento de inconvenientes para el clima. 
+    Volar ha revolucionado nuestra forma de vivir y viajar. Ahora podemos viajar más lejos, más rápido y con más frecuencia, pero desgraciadamente esto no ha venido sin una desventaja para el clima. 
 
     De hecho, hay una relación de 100 entre los factores de emisión (cantidad de CO₂ emitida por km recorrido) de un avión y un tren.
 
@@ -628,14 +637,14 @@ transport . covoiturage:
     - web<a href="https://www.tictactrip.eu/company/carpooling/idvroom">iDVROOM</a>: plataforma para compartir coche en Francia y en el extranjero;
 
 
-    En todos los casos, recuerde adaptar su modo de transporte a la distancia y favorecer los modos suaves o el transporte público (autobús, metro, bicicleta, a pie, etc.) en la medida de lo posible.
+    En todos los casos, no olvide adaptar su modo de transporte a la distancia y favorecer en la medida de lo posible los modos suaves o el transporte público (autobús, metro, bicicleta, a pie, etc.).
 transport . boulot:
   description: |
-    Mientras que el coche compartido de larga distancia es bien conocido en Suiza, el de corta distancia es casi inexistente: hoy en día, sólo el 4% de los desplazamientos de casa al trabajo se hacen en coche compartido.
+    Mientras que el uso compartido de vehículos de larga distancia es bien conocido en Suiza, el de corta distancia es casi inexistente: hoy en día, sólo el 4% de los desplazamientos de casa al trabajo se realizan en coche compartido.
 
-    Numerosos sitios web ofrecen plataformas gratuitas para poner en contacto a personas que realizan el mismo trayecto, ya sea de forma regular, por ejemplo para ir al trabajo, o puntual, por ejemplo para ir a esquiar.
+    Numerosos sitios web ofrecen plataformas gratuitas para poner en contacto a personas que realizan el mismo trayecto, ya sea regularmente, por ejemplo para ir al trabajo, u ocasionalmente, por ejemplo en un viaje de esquí.
 
-    -<a href="http://www.e-covoiturage.ch/index.php/fr/">Sitio web de e-carpooling</a>: plataforma suiza para compartir coche;
+    -<a href="http://www.e-covoiturage.ch/index.php/fr/">e-carpooling website</a>: plataforma suiza para compartir coche;
 
     -<a href="http://www.covoiturage-leman.org/">Léman carpooling</a> website: plataforma para compartir coche en la región del Lago Lemán;
 
@@ -654,7 +663,7 @@ transport . boulot:
 
     - web<a href="https://www.tictactrip.eu/company/carpooling/idvroom">iDVROOM</a>: plataforma para compartir coche en Francia y en el extranjero;
 
-     En todos los casos, recuerde adaptar su modo de transporte a la distancia y favorecer los modos suaves o el transporte público (autobús, metro, bicicleta, a pie, etc.) en la medida de lo posible.
+     En todos los casos, no olvide adaptar su modo de transporte a la distancia y favorecer en la medida de lo posible los modos suaves o el transporte público (autobús, metro, bicicleta, a pie, etc.).
 transport . réduction covoiturage:
   description: |
     Según un estudio realizado en Francia, el coche compartido puede reducir las emisiones en torno a un 20%.
@@ -671,12 +680,12 @@ transport . boulot . sans voiture:
     >¿Lo sabía? El cantón y varios municipios subvencionan las bicicletas mecánicas, eléctricas, de carga, plegables, etc. Calcule su subvención 🚲️ en 3 clics ( <a href="https://www.ge.ch/subventions-velo">Subventions vélo | ge.</a> ch ).
 transport . boulot . sans voiture . empreinte:
   note: |
-    Consideramos que un trayecto al trabajo realizado en coche puede sustituirse por un tren regional y no por un tren interurbano.
+    Se supone que un trayecto al trabajo realizado en coche puede sustituirse por un tren regional y no por un tren interurbano.
 transport . voiture 5km:
   description: |
     Recurrir a formas activas de transporte (a pie, en patines, en bicicleta, en patinete, etc.) para trayectos "cortos" de menos de 5 km puede reducir significativamente nuestras emisiones de gases de efecto invernadero, descongestionar las vías urbanas y disminuir la contaminación (atmosférica y acústica).
 
-    Descubra cómo desplazarse en bicicleta <a href="https://www.ge.ch/document/carte-velo">por Ginebra</a> y <a href="https://schweizmobil.ch/fr/ete">Suiza</a>.
+    Más información sobre el ciclismo <a href="https://www.ge.ch/document/carte-velo">en Ginebra</a> y <a href="https://schweizmobil.ch/fr/ete">Suiza</a>.
 
       >¿Lo sabía? El cantón y varios municipios subvencionan las bicicletas mecánicas, eléctricas, de carga, plegables, etc. <a href="https://www.ge.ch/subventions-velo">Calcule su subvención 🚲️ en 3 clics</a>.
 transport . scooter électrique:
@@ -722,13 +731,14 @@ logement . baisse température . nombre degrés:
 
     Por supuesto, las ventanas deben permanecer cerradas. Para ventilar tu casa, y si no tienes ventilación mecánica, abre las ventanas de par en par 1 vez al día durante 5 o 10 minutos diarios.
 
-    Una buena gestión de persianas y contraventanas aumentará tu confort y reducirá aún más las emisiones de tu hogar: abrirlas durante el día te permitirá beneficiarte de la energía del sol, mientras que cerrarlas por la noche aumentará tu confort y reducirá la pérdida de calor.
+    Una buena gestión de persianas y contraventanas aumentará tu confort y reducirá aún más las emisiones de tu vivienda: abrirlas durante el día te permitirá aprovechar la energía del sol, mientras que cerrarlas por la noche aumentará tu confort y reducirá las pérdidas de calor.
 logement . baisse température . gains 1 degré:
   formule: 0.1
   description: |
-    Es la reducción estimada del consumo de energía cuando bajamos 1 °C la temperatura de nuestra vivienda calefactada dentro de la gama de temperaturas habitual (unos 20°).
+    Se trata de la reducción estimada del gasto energético cuando bajamos la temperatura de nuestra vivienda caldeada en 1 °C dentro del rango de temperatura habitual (unos 20°).
 
     Utilizamos la estimación que figura en la <a href="https://www.ge.ch/document/30986/annexe/0">guía de Cantón "Des gestes pour économiser notre énergie"</a>.
+  note: La fuente es el documento mencionado en la descripción (guía Canton "Des gestes pour économiser notre énergie")
 logement . éteindre appareils:
   description: |
     Nuestras casas y pisos están llenos de aparatos electrónicos y electrodomésticos que a menudo se dejan encendidos o en modo de espera.
@@ -757,7 +767,7 @@ logement . rénovation énergétique:
 logement . gain rénovation:
   formule: 20%
   note: |
-    El ahorro medio de energía tras una renovación varía mucho según el tipo de renovación, el ajuste de las instalaciones, etc. Entre un edificio mal aislado y un edificio bien aislado, la diferencia de consumo es del orden de 1,2 a 2,5.
+    El ahorro medio de energía tras una renovación varía mucho en función del tipo de renovación, la forma de ajustar las instalaciones, etc. La diferencia de consumo energético entre un edificio mal aislado y un edificio bien aislado es del orden de 1,2 a 2,5 (OCEN)
 logement . propriétaire:
   description: |
     Como inquilino, es obviamente complicado hacer inversiones que mejoren la huella de la propiedad: aislar la vivienda o cambiar la fuente de energía son acciones que sólo pueden hacer los propietarios. Pero eso no significa que los inquilinos no puedan pedírselo
@@ -770,9 +780,9 @@ logement . raccordement réseau de chaleur:
 
     Sin embargo, conectarse a una red de calefacción no es tan sencillo como suscribir un contrato de electricidad. La viabilidad de la conexión depende de una serie <a href=" https://www.ge.ch/installations-chauffage-batiment/se-raccorder-reseau-chauffage-distance">de condiciones técnicas</a>.
 
-    En primer lugar, la conexión es para todo un edificio: no es posible conectar sólo su piso. En segundo lugar, hay que comprobar que hay una red de calefacción cerca del edificio, y luego ver la infraestructura de calefacción dentro del edificio (un edificio con un sistema de calefacción colectivo le permitirá conectarse a un coste menor)
+    En primer lugar, la conexión es para todo un edificio: no es posible conectar sólo su piso. En segundo lugar, hay que comprobar que hay una red de calefacción cerca del edificio, y luego estudiar la infraestructura de calefacción dentro del edificio (un edificio con un sistema de calefacción colectivo le permitirá conectarse a un coste menor)
 
-    En cuanto al impacto sobre el clima, una red de calefacción se alimenta generalmente de fuentes de energía locales renovables o recuperadas (al menos el 50% en Ginebra, con el objetivo del 80% para 2030), es decir, mediante la incineración de residuos domésticos, la combustión de biomasa o la utilización de energía geotérmica, lo que reduce considerablemente el impacto en CO2 del kWh de energía consumida en comparación con el gas o el petróleo.
+    En cuanto al impacto sobre el clima, una red de calefacción se alimenta generalmente de fuentes de energía locales renovables o recuperadas (al menos el 50% en Ginebra, con un objetivo del 80% para 2030), es decir, mediante la incineración de residuos domésticos, la combustión de biomasa o la utilización de energía geotérmica, lo que reduce considerablemente el impacto en CO2 del kWh de energía consumida en comparación con el gas o el petróleo.
   description: |
     Alimentadas al menos en un 50% por energías locales renovables y recuperadas (calor procedente de la incineración de residuos, biomasa, geotermia, etc.), las redes de calefacción urbana son una forma de calefacción con bajas emisiones de carbono. 
 
@@ -783,14 +793,14 @@ alimentation . manger local:
   description: |
     La alimentación local reduce las distancias de transporte de los productos que consumimos. Sin embargo, aunque esto pueda parecer contraintuitivo, la alimentación local puede, según los casos, ser desventajosa en términos de emisiones de gases de efecto invernadero: el impacto del origen de nuestros productos no puede resumirse en una comparación entre distancias cortas y largas. Los efectos de escala, la centralización de los productos, la eficacia de los transportes utilizados (o a la inversa, la falta de eficacia) hacen que la cuestión sea más compleja desde el punto de vista de la contabilidad del carbono.
 
-    Sin embargo, la alimentación local tiene muchos otros efectos positivos, como el apoyo a los agricultores de nuestras regiones 
+    No obstante, la alimentación local tiene muchas otras repercusiones positivas, como el apoyo a los agricultores de nuestras regiones 
 
     En Ginebra, la etiqueta "Genève Région Terre Avenir" (GRTA) identifica los productos procedentes de la agricultura local. En el sitio web https://www.geneveterroir.ch/fr/marque-de-garantie-grta-info/2443 se enumeran los productores GRTA del cantón.
 
     Para más información: https://www.ge.ch/dossier/alimentation-durable-geneve/climat-dans-votre-assiette/proximite
 alimentation . manger de saison:
   description: |
-    En contra de lo que cabría imaginar, el impacto de esta acción es relativamente pequeño, ya que la proporción de productos de temporada en la dieta media suiza es muy baja.
+    Contrariamente a lo que cabría imaginar, el impacto de esta acción es relativamente pequeño, ya que la proporción de productos de temporada en la dieta media suiza es muy baja.
 
     Pero la alimentación estacional tiene muchas otras ventajas, como un menor consumo de agua, una mayor diversidad de cultivos y una menor dependencia de los hidrocarburos (gas y petróleo) para calentar los invernaderos. Además, el organismo no necesita los mismos nutrientes todo el año, y estas necesidades se corresponden con los alimentos de temporada.
 
