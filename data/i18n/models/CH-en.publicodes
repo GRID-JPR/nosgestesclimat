@@ -738,7 +738,6 @@ logement . chauffage . baisse température . nombre degrés:
 
     Good management of blinds and shutters will increase your comfort and further reduce emissions from your home: opening them during the day will allow you to benefit from the sun's energy, while closing them at night will increase your comfort and reduce heat loss.
 logement . chauffage . baisse température . gains 1 degré:
-  formule: 0.1
   description: |
     This is the estimated reduction in energy consumption when we lower the temperature of our heated home by 1°C within the usual temperature range (around 20°).
 
